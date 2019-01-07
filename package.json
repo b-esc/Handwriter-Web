@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "blueimp-file-upload-expressjs": "github:ldarren/blueimp-file-upload-expressjs",
     "cookie-parser": "~1.4.3",
     "cropit": "^0.5.1",
     "debug": "~2.6.9",
