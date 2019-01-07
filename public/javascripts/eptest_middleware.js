@@ -1,7 +1,21 @@
 $(document).ready(function(){
-    alert('you can see me in public javascripts');
+    $('body').append("<a>middleware loaded</a><br>");
+    $('#plumb_btn').click(plumb);
 
-    function echo_rp(msg) {
-        rp.echo('hello');
+    function plumb(){
+        let input = $('#plumb_input').val();
+        $.ajax({
+            type: 'POST',
+            data:JSON.stringify({
+                msg: input
+            }),
+            contentType:'application/json',
+            url:'/r_plumb',
+            success: function(data){
+                $('body').append(`<a>plumbed message: ${data}</a>`);
+            }
+        });
     }
+    //	$("#btn_addGroup").click(addGroup_onClick);
+
 });

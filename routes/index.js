@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { layout: 'main.hbs' });
 });
 
+router.get('/rplumbtest',function(req,res){
+    res.render('rplumbtest',{layout: 'main.hbs'});
+});
+
 module.exports = router;
