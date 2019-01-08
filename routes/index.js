@@ -12,7 +12,7 @@ router.get('/rplumbtest',function(req,res){
 });
 
 router.get('/uploadtest',function(req,res){
-    res.render('uploadtest',{layout: 'main.hbs'});
+    res.render('uploadtest',{layout: 'main_legacy.hbs'});
 });
 
 module.exports = router;

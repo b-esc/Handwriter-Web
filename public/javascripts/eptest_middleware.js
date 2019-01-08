@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('body').append("<a>middleware loaded</a><br>");
+    //$('body').append("<a>middleware loaded</a><br>");
     $('#plumb_btn').click(plumb);
 
     function plumb(){

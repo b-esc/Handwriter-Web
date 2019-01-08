@@ -36,11 +36,11 @@ module.exports = function(router) {
         uploader.get(req, res, function(err, obj) {
             res.send(JSON.stringify(obj));
         });
-
     });
 
     router.post('/upload', function(req, res) {
         uploader.post(req, res, function(err, obj) {
+            //console.log(obj);
             res.send(JSON.stringify(obj));
         });
 

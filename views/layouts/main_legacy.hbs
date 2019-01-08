@@ -1,0 +1,175 @@
+{{!-- Main template used when jquery 1 and bootstrap 3 are needed--}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>handwriter_webapp skeleton, features then styling</title>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/stylesheets/blueimp-gallery.min.css" rel="stylesheet">
+    <link href="/public/stylesheets/jquery.fileupload.css" rel="stylesheet">
+    <link href="/public/stylesheets/jquery.fileupload-ui.css" rel="stylesheet">
+    <!--<script-->
+            <!--src="https://code.jquery.com/jquery-3.3.1.js"-->
+            <!--integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="-->
+            <!--crossorigin="anonymous"></script>-->
+    <!-- Bootstrap core CSS -->
+    <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="/public/stylesheets/blueimp-gallery.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/public/stylesheets/leftbar.css" rel="stylesheet">
+    <link href="/public/stylesheets/rightbar.css" rel="stylesheet">
+
+    <!--<script src="/public/javascripts/rplumber/eptest.js"></script>-->
+    <script src="/public/javascripts/eptest_middleware.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- SidebarR -->
+    <div id="sidebar-wrapperR">
+        <ul class="sidebar-navR">
+            <li class="sidebar-brandR">
+                <a href="#">
+                    RIGHT
+                </a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">6</a>
+            </li>
+            <li>
+                <a href="#">7</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    LEFT
+                </a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">6</a>
+            </li>
+            <li>
+                <a href="#">7</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    {{{body}}}
+    <!--<div id="page-content-wrapper">-->
+        <!--<div class="container-fluid">-->
+            <!--<h1>Simple Sidebar</h1>-->
+            <!--<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>-->
+            <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
+            <!--<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>-->
+
+        <!--</div>-->
+        <!--<div id="image-cropper">-->
+            <!--<div class="cropit-preview"></div>-->
+
+            <!--<input type="range" class="cropit-image-zoom-input" />-->
+
+            <!--<input type="file" class="cropit-image-input" />-->
+            <!--<div class="select-image-btn">Select new image</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Bootstrap core JavaScript -->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--<script-->
+        <!--src="https://code.jquery.com/jquery-3.3.1.js"-->
+        <!--integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="-->
+        <!--crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>-->
+
+<!-- Menu Toggle Script -->
+<!--<script>-->
+    <!--$("#menu-toggle").click(function(e) {-->
+        <!--e.preventDefault();-->
+        <!--$("#wrapper").toggleClass("toggled");-->
+    <!--});-->
+
+    <!--//$('#image-cropper').cropit({ imageBackground: true });-->
+<!--</script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="/public/javascripts/uploader/jquery.ui.widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="/public/javascripts/uploader/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="/public/javascripts/uploader/load-image.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="/public/javascripts/uploader/canvas-to-blob.min.js"></script>
+<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- blueimp Gallery script -->
+<script src="/public/javascripts/uploader/jquery.blueimp-gallery.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/public/javascripts/uploader/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload-image.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload-audio.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload-validate.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="/public/javascripts/uploader/jquery.fileupload-ui.js"></script>
+<!-- The main application script -->
+<script src="/public/javascripts/uploader/main.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@ app.post('/r_plumb',function(req,res){
             let info = JSON.parse(body);
             console.log(info.msg);
             res.send(info.msg);
-            //res.render('rplumbtest',{layout: 'main.hbs',msg:info.msg});
+            //res.render('rplumbtest',{layout: 'main_legacy.hbs',msg:info.msg});
 
         } else{
             console.log("there was an error... \n \n \n");
@@ -17,5 +17,7 @@ app.post('/r_plumb',function(req,res){
         }
     });
 });
+
+app.post('/')
 
 

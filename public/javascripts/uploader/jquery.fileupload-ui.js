@@ -162,8 +162,8 @@
                     deferred;
                 if (data.context) {
                     data.context.each(function (index) {
-                        var file = data._response.result[index] ||
-                            {error: 'Empty file upload result'};//TO THIS
+                        var file = files[index] ||
+                                {error: 'Empty file upload result'};
                         deferred = that._addFinishedDeferreds();
                         that._transition($(this)).done(
                             function () {
