@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var imgupload = require('./image_upload')(router);
+var upload_config = require('./upload_config')(router);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
