@@ -15,4 +15,8 @@ router.get('/uploadtest',function(req,res){
     res.render('uploadtest',{layout: 'main_legacy.hbs'});
 });
 
+router.get('/plumbloadtest',function(req,res){
+    res.render('plumbloadtest',{layout:'main_legacy.hbs'});
+});
+
 module.exports = router;

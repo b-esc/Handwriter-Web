@@ -18,6 +18,18 @@ app.post('/r_plumb',function(req,res){
     });
 });
 
-app.post('/')
+app.post('/plumb_upload',function(req,res){
+    request(plumber_url,function callback(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            let info = JSON.parse(body);
+            console.log(info.msg);
+            res.send(info.msg);
+            //res.render('rplumbtest',{layout: 'main_legacy.hbs',msg:info.msg});
 
+        } else{
+            console.log("there was an error... \n \n \n");
+            console.log(error);
+        }
+    });
+});
 
