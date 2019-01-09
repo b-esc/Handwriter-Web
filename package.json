@@ -9,6 +9,7 @@
     "blueimp-file-upload-expressjs": "github:ldarren/blueimp-file-upload-expressjs",
     "cookie-parser": "~1.4.3",
     "cropit": "^0.5.1",
+    "croppie": "^2.6.2",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "express-handlebars": "^3.0.0",
@@ -20,6 +21,7 @@
     "popper.js": "^1.14.6",
     "r-script": "0.0.3",
     "request": "^2.88.0",
-    "startbootstrap-simple-sidebar": "^4.1.1"
+    "startbootstrap-simple-sidebar": "^4.1.1",
+    "sweetalert": "^2.1.2"
   }
 }

@@ -19,4 +19,7 @@ router.get('/plumbloadtest',function(req,res){
     res.render('plumbloadtest',{layout:'main.hbs'});
 });
 
+router.get('/croptest',function(req,res){
+    res.render('croptest',{layout:'main.hbs'});
+});
 module.exports = router;
