@@ -22,4 +22,13 @@ router.get('/plumbloadtest',function(req,res){
 router.get('/croptest',function(req,res){
     res.render('croptest',{layout:'main.hbs'});
 });
+
+router.get('/particletest',function(req,res){
+    res.render('particletest',{layout:'main.hbs'});
+});
+
+router.get('/newdocuments',function(req,res){
+    res.render('newdocuments',{layout:'main.hbs'});
+});
+
 module.exports = router;

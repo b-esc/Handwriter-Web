@@ -1,7 +1,3 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
 a {
   color: #00B7FF;
@@ -13,4 +9,22 @@ a {
 
 .center{
     text-align: center;
+}
+
+#particles-js{
+    height: 100%;
+    width: 100%;
+    background: gray;
+}
+
+#headerbar{
+    background-color: #ffffff;
+    margin: 0;
+    padding: 1%;
+    border: groove;
+}
+
+.f_csafe_title{
+    font-family: 'Monsterrant', sans-serif;
+    font-size: 50px;
 }
