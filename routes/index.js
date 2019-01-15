@@ -31,4 +31,9 @@ router.get('/newdocuments',function(req,res){
     res.render('newdocuments',{layout:'main.hbs'});
 });
 
+router.get('/docsingle',function(req,res){
+    res.render('docsingle',{layout:'main.hbs'});
+});
+
+
 module.exports = router;

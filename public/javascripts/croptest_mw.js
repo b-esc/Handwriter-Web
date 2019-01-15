@@ -35,7 +35,7 @@ $( document ).ready(function() {
         }
         $('body').append(html);
         swal({
-            title: '',
+            title: 'fancy loading bar here plz',
             content:{
                 element: "img",
                 attributes:{
@@ -54,15 +54,37 @@ $( document ).ready(function() {
         }, 1);
     }
 
+    //nogo probably
+    function uploadResult(result){
+        alert('attempting upload result');
+        let image = result.src;
+        console.log(image);
+        $.ajax({
+            type:'POST',
+            data: result,
+            url:'/upload',
+            contentType: 'application/json',
+            success: function(data){
+                console.log(data);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
+
     $('#upload').on('change', function () { readFile(this); });
     $('.upload-result').on('click', function (ev) {
         $uploadCrop.croppie('result', {
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
+            $('#imagebase64').val(resp);
             popupResult({
                 src: resp
             });
+            $('#fileupload').submit();
+            //uploadResult({src:resp});
         });
     });
 

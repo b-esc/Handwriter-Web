@@ -1,0 +1,30 @@
+<div id="page-content-wrapper">
+    <div class="btn-container">
+        <div class="container text-center">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.css" />
+            <script src="/javascripts/croptest_mw.js"></script>
+
+            <!--<form action="testth.php" id="form" method="post">-->
+            <form id="fileupload" action="/multerupload" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="imagebase64" name="upload-targ">
+            </form>
+                <!--id responsible for croppie, name responsible for multer-->
+                <input type="file" id="upload" name="upload-targ" value="Choose a file">
+                <div id="upload-demo"></div>
+                <input type="hidden" id="imagebase64" name="imagebase64">
+                <!--<a href="#" class="upload-result">Send</a>-->
+                <!--<button type="button" id="upload-result">view cropped</button>-->
+                <!--</form>-->
+                <script src="/sweetalert/dist/sweetalert.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
+                <div class="upload-result">
+                    <button type="submit" class="btn btn-outline-primary start">Process</button>
+                </div>
+
+            </br>
+            <!--<button type="button" class="btn btn-outline-success">Existing Documents</button>-->
+            <!--<br><br>-->
+            <!--<button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</button>-->
+        </div>
+    </div>
+</div>

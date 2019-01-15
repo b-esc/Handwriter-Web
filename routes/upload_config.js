@@ -34,13 +34,14 @@ var uploader = require('blueimp-file-upload-expressjs')(options);
 module.exports = function(router) {
     router.get('/upload', function(req, res) {
         uploader.get(req, res, function(err, obj) {
+            console.log("error!: " + err);
             res.send(JSON.stringify(obj));
         });
     });
 
     router.post('/upload', function(req, res) {
         uploader.post(req, res, function(err, obj) {
-            //console.log(obj);
+            console.log("error!: " + err);
             res.send(JSON.stringify(obj));
         });
 

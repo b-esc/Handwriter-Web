@@ -1,5 +1,10 @@
 var createError = require('http-errors');
 var express = require('express');
+var multer = require('multer');
+const upload = multer({
+    dest: 'uploads/'
+});
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,6 +12,7 @@ var exphbs = require('express-handlebars');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bodyParser = require('body-parser');
+
 
 var app = express();
 module.exports = app;
@@ -29,6 +35,10 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'rplumber')));
+app.post('/multerupload', upload.single('upload-targ'), function (req, res, next) {
+    console.log("should output some file stuff yea?");
+    console.log(req.file);
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -49,5 +59,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 //module.exports = app;
