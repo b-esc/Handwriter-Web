@@ -73,17 +73,38 @@ $( document ).ready(function() {
         });
     }
 
+    function base64Upload(str){
+        alert('attempting to upload image via base 64');
+        $.ajax({
+            type: 'POST',
+            data:{img:JSON.stringify(str)},
+            contentType:'json',
+            url:'/fileUpload',
+            success: function(data){
+                console.log(data);
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+
     $('#upload').on('change', function () { readFile(this); });
     $('.upload-result').on('click', function (ev) {
         $uploadCrop.croppie('result', {
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
-            $('#imagebase64').val(resp);
+            console.log(typeof(resp));
+            console.log(resp);
+            //console.log($('#hiddenupload'));
+            //$('#hiddenupload').val(resp);
+            console.log($('#hiddenupload'));
             popupResult({
                 src: resp
             });
-            $('#fileupload').submit();
+            base64Upload(resp);
+            //$('#fileupload').submit();
             //uploadResult({src:resp});
         });
     });

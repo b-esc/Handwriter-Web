@@ -11,17 +11,20 @@ var logger = require('morgan');
 var exphbs = require('express-handlebars');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dbRouter = require('./database/mydb');
 var bodyParser = require('body-parser');
 
 
 var app = express();
 module.exports = app;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
+app.use(bodyParser.json({limit:'5mb'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
