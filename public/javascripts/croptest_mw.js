@@ -74,16 +74,23 @@ $( document ).ready(function() {
     }
 
     function base64Upload(str){
+        console.log(str);
         alert('attempting to upload image via base 64');
+        test = {img:str};
+        console.log(test);
+        console.log(JSON.stringify(test));
         $.ajax({
             type: 'POST',
-            data:{img:JSON.stringify(str)},
-            contentType:'json',
+            data:JSON.stringify({img:str}),
+            dataType: "json",
+            contentType:'application/json',
             url:'/fileUpload',
             success: function(data){
+                console.log('the ajax call was considered successful');
                 console.log(data);
             },
             error: function(err){
+                console.log('an error occured during ajax');
                 console.log(err);
             }
         });
@@ -96,10 +103,10 @@ $( document ).ready(function() {
             size: 'viewport'
         }).then(function (resp) {
             console.log(typeof(resp));
-            console.log(resp);
+            //console.log(resp);
             //console.log($('#hiddenupload'));
             //$('#hiddenupload').val(resp);
-            console.log($('#hiddenupload'));
+            //console.log($('#hiddenupload'));
             popupResult({
                 src: resp
             });

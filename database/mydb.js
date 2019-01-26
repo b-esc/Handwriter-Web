@@ -1,6 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/local";
 var router = require("../routes/index");
+
+//unused
+var app = require("../app");
 var mongoose = require('mongoose');
 mongoose.connect(url);
 var multer = require('multer');
@@ -23,11 +26,16 @@ const Image = mongoose.model('Image',imageSchema);
 
 router.post('/fileUpload',(req,res)=>{
     try {
-        console.log(JSON.stringify(req));
+        //console.log(JSON.stringify(req));
         console.log('did we even hit router.post?');
-        console.log(req);
-        console.log("\n stingify below --- \n");
-        console.log(JSON.parse(req));
+        base64imgstr = new Buffer(req.body.img.split(",")[1],"base64");
+        var testsave = new Image({name:"testlol",image:base64imgstr});
+        testsave.save(function(err,testsave){
+            if(err) return console.error(err);
+        });
+        console.log(base64imgstr);
+        console.log("\n parse below --- \n");
+        res.send("lol");
     }catch(err){console.log(err)}
    //res.send(req);
 });

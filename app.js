@@ -16,7 +16,8 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
-module.exports = app;
+
+//module.exports = app;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,10 +25,12 @@ app.engine('hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
-app.use(bodyParser.json({limit:'5mb'}));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json({limit:'50mb'}));
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
@@ -38,10 +41,10 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'rplumber')));
-app.post('/multerupload', upload.single('upload-targ'), function (req, res, next) {
-    console.log("should output some file stuff yea?");
-    console.log(req.file);
-});
+// app.post('/multerupload', upload.single('upload-targ'), function (req, res, next) {
+//     console.log("should output some file stuff yea?");
+//     console.log(req.file);
+// });
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -65,4 +68,4 @@ app.use(function(err, req, res, next) {
 
 
 
-//module.exports = app;
+module.exports = app;
