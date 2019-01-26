@@ -13,7 +13,7 @@ db.on('error',()=>{
     console.log('error while connecting');
 });
 db.once('open',()=>{
-    console.log('hey weve connected');
+    console.log('hey weve connected to mongodb');
 });
 
 var imageSchema = new mongoose.Schema({
@@ -30,15 +30,34 @@ router.post('/fileUpload',(req,res)=>{
         console.log('did we even hit router.post?');
         base64imgstr = new Buffer(req.body.img.split(",")[1],"base64");
         var testsave = new Image({name:"testlol",image:base64imgstr});
-        testsave.save(function(err,testsave){
-            if(err) return console.error(err);
+        testsave.save(function(err){
+            //if(err) return console.error(err);
+            if(err) console.log(err);
+            console.log("saved!");
         });
         console.log(base64imgstr);
         console.log("\n parse below --- \n");
-        res.send("lol");
+        res.send({lol:"lol"});
     }catch(err){console.log(err)}
    //res.send(req);
 });
+/*
+
+wow im amateur lool
+
+ok so reading strategy would be
+
+file name -> fetch from db -> save it locally
+
+-> plumb file name
+
+!! need to ensure everything has a unique name consequently :(
+
+upload: just upload images to mongodb..
+process: process and get
+analyze handwriting:
+ */
+
 // var storage = multer.diskStorage({
 //     destination: (req,file,cb) =>{
 //         cb(null,'public/uploaded')
