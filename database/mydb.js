@@ -1,8 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/local";
 var router = require("../routes/index");
-
-//unused
+var fs = require('fs');
+var path = require('path');
+const request = require('request');
 var app = require("../app");
 var mongoose = require('mongoose');
 mongoose.connect(url);
@@ -28,19 +29,63 @@ router.post('/fileUpload',(req,res)=>{
     try {
         //console.log(JSON.stringify(req));
         console.log('did we even hit router.post?');
+        filename = req.body.filename;
         base64imgstr = new Buffer(req.body.img.split(",")[1],"base64");
-        var testsave = new Image({name:"testlol",image:base64imgstr});
+        var testsave = new Image({name:filename,image:base64imgstr});
         testsave.save(function(err){
             //if(err) return console.error(err);
             if(err) console.log(err);
+            console.log(__dirname);
             console.log("saved!");
+            saveBase64StrLocal(filename,base64imgstr);
+            features = getFeatures(filename);
+            console.log('gonna output features!!');
+            console.log(features);
+            res.send(features);
         });
-        console.log(base64imgstr);
-        console.log("\n parse below --- \n");
-        res.send({lol:"lol"});
     }catch(err){console.log(err)}
    //res.send(req);
 });
+
+function getFeatures(fileName){
+    var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
+    request(url,(err,res,body) =>{
+        if(!err && res.statusCode == 200){
+            console.log("gonna get body from get features!!");
+            console.log(body);
+            return JSON.parse(body);
+        }
+        else throw(err);
+    });
+}
+
+function saveBase64StrLocal(fileName, b64ImgStr){
+    fs.writeFile(__dirname + "/../uploads/"+fileName,b64ImgStr,'base64',(err) => {
+        if(err) throw err;
+        else console.log('saved image!!');
+    });
+}
+
+// app.post('/r_img_plumb',function(req,res){
+//     const img_name = req.body.img_name;
+//     const plumber_url = `http://127.0.0.1:7533/img_test?img_name=${img_name}`;
+//     request(plumber_url,function callback(error, response, body) {
+//         if (!error && response.statusCode == 200) {
+//             console.log(body);
+//             console.log(JSON.parse(body));
+//             res.send(JSON.parse(body));
+//             // let info = JSON.parse(body);
+//             // console.log(info.msg);
+//             // res.send(info.msg);
+//             //res.render('rplumbtest',{layout: 'main_legacy.hbs',msg:info.msg});
+//
+//         } else{
+//             console.log("there was an error... \n \n \n");
+//             console.log(error);
+//         }
+//     });
+// });
+
 /*
 
 wow im amateur lool

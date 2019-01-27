@@ -73,15 +73,14 @@ $( document ).ready(function() {
         });
     }
 
-    function base64Upload(str){
+    function base64Upload(str,filename){
         console.log(str);
         alert('attempting to upload image via base 64');
         test = {img:str};
         console.log(test);
-        console.log(JSON.stringify(test));
         $.ajax({
             type: 'POST',
-            data:JSON.stringify({img:str}),
+            data:JSON.stringify({img:str,filename:filename}),
             dataType: "json",
             contentType:'application/json',
             url:'/fileUpload',
@@ -102,7 +101,7 @@ $( document ).ready(function() {
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
-            console.log(typeof(resp));
+            //console.log(typeof(resp));
             //console.log(resp);
             //console.log($('#hiddenupload'));
             //$('#hiddenupload').val(resp);
@@ -110,7 +109,8 @@ $( document ).ready(function() {
             popupResult({
                 src: resp
             });
-            base64Upload(resp);
+            filename = $('#image').val();
+            base64Upload(resp,filename);
             //$('#fileupload').submit();
             //uploadResult({src:resp});
         });
