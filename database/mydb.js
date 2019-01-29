@@ -40,8 +40,9 @@ router.post('/fileUpload',(req,res)=>{
             saveBase64StrLocal(filename,base64imgstr);
             features = getFeatures(filename);
             console.log('gonna output features!!');
-            console.log(features);
-            res.send(features);
+            console.log(typeof(features));
+            res.send({test:'lol'});
+            //res.send(JSON.stringify(features));
         });
     }catch(err){console.log(err)}
    //res.send(req);
@@ -53,7 +54,8 @@ function getFeatures(fileName){
         if(!err && res.statusCode == 200){
             console.log("gonna get body from get features!!");
             console.log(body);
-            return JSON.parse(body);
+            res.send(body);
+            //return JSON.parse(body);
         }
         else throw(err);
     });

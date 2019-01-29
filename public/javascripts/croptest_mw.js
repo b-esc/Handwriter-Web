@@ -89,8 +89,9 @@ $( document ).ready(function() {
                 console.log(data);
             },
             error: function(err){
+                throw err;
                 console.log('an error occured during ajax');
-                console.log(err);
+                //console.log(err);
             }
         });
     }
