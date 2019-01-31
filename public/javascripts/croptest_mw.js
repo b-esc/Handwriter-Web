@@ -54,6 +54,26 @@ $( document ).ready(function() {
         }, 1);
     }
 
+    //its too early to probably do type checking
+
+    function displayFeatures(features,filename){
+        var html = "<table class='table'>";
+        html += "<thead><tr>";
+        for(var arr1 in features[0]){
+            html += "<th scope='col'>" + arr1 + "</th>";
+        }
+        html+="</tr></thead><tbody>";
+        for(var i = 0; i < features.length; i++){
+            html += "<tr>";
+            for(var prop in features[i]){
+                html += "<td>" + features[i][prop] + "</td>";
+            }
+            html += "</tr>"
+        }
+        html += "</tbody>";
+        html += "</table>";
+        Swal.fire({title:filename,html:html});
+    }
     //nogo probably
     function uploadResult(result){
         alert('attempting upload result');
@@ -87,6 +107,7 @@ $( document ).ready(function() {
             success: function(data){
                 console.log('the ajax call was considered successful');
                 console.log(data);
+                displayFeatures(data,filename);
             },
             error: function(err){
                 throw err;
@@ -110,7 +131,7 @@ $( document ).ready(function() {
             popupResult({
                 src: resp
             });
-            filename = $('#image').val();
+            filename = $('#upload').val().replace(/C:\\fakepath\\/i, '');
             base64Upload(resp,filename);
             //$('#fileupload').submit();
             //uploadResult({src:resp});

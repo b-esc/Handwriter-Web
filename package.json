@@ -208,6 +208,7 @@
     "streamsearch": "^0.1.2",
     "string_decoder": "^1.2.0",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^8.0.3",
     "tinycolor2": "^1.4.1",
     "tough-cookie": "^3.0.0",
     "trim": "0.0.1",

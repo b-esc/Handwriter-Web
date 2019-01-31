@@ -38,23 +38,23 @@ router.post('/fileUpload',(req,res)=>{
             console.log(__dirname);
             console.log("saved!");
             saveBase64StrLocal(filename,base64imgstr);
-            features = getFeatures(filename);
-            console.log('gonna output features!!');
-            console.log(typeof(features));
-            res.send({test:'lol'});
+            getFeatures(filename,function(data){
+                res.send(JSON.parse(data));
+            });
+
+            //res.send({test:'lol'});
             //res.send(JSON.stringify(features));
         });
     }catch(err){console.log(err)}
    //res.send(req);
 });
 
-function getFeatures(fileName){
+function getFeatures(fileName,callback){
+    console.log("incoming file: " + fileName);
     var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
     request(url,(err,res,body) =>{
         if(!err && res.statusCode == 200){
-            console.log("gonna get body from get features!!");
-            console.log(body);
-            res.send(body);
+            return callback(body);
             //return JSON.parse(body);
         }
         else throw(err);
