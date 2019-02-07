@@ -26,6 +26,7 @@ $( document ).ready(function() {
     });
 
     function popupResult(result) {
+        console.log("popping up result...");
         var html;
         if (result.html) {
             html = result.html;
@@ -34,16 +35,21 @@ $( document ).ready(function() {
             html = '<img src="' + result.src + '" />';
         }
         $('body').append(html);
-        swal({
-            title: 'fancy loading bar here plz',
-            content:{
-                element: "img",
-                attributes:{
-                    src : result.src
-                }
-            },
-            allowOutsideClick: true
+        Swal.fire({
+           title: "Cropped Image",
+           imageUrl: result.src,
+            type: "success"
         });
+        // swal({
+        //     title: 'fancy loading bar here plz',
+        //     content:{
+        //         element: "img",
+        //         attributes:{
+        //             src : result.src
+        //         }
+        //     },
+        //     allowOutsideClick: true
+        // });
         setTimeout(function(){
             $('.sweet-alert').css('margin', function() {
                 var top = -1 * ($(this).height() / 2),
@@ -57,6 +63,7 @@ $( document ).ready(function() {
     //its too early to probably do type checking
 
     function displayFeatures(features,filename){
+        features = features[0];
         var html = "<table class='table'>";
         html += "<thead><tr>";
         for(var arr1 in features[0]){
@@ -72,7 +79,7 @@ $( document ).ready(function() {
         }
         html += "</tbody>";
         html += "</table>";
-        Swal.fire({title:filename,html:html});
+        Swal.fire({title:filename,customContainerClass:".swal2-fs",html:html});
     }
     //nogo probably
     function uploadResult(result){
@@ -94,7 +101,7 @@ $( document ).ready(function() {
     }
 
     function base64Upload(str,filename){
-        console.log(str);
+        //console.log(str);
         alert('attempting to upload image via base 64');
         test = {img:str};
         console.log(test);
