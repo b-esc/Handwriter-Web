@@ -1,14 +1,14 @@
 $( document ).ready(function() {
     var $uploadCrop;
+    var toUpload;
 
     function readFile(input) {
+      alert('file bein read');
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                },null,1,0);
-                $('.upload-demo').addClass('ready');
+              $('#thumbnail-targ').css("background-image","url("+e.target.result+")");
+              toUpload = e.target.result;
             }
             reader.readAsDataURL(input.files[0]);
         }
@@ -28,16 +28,21 @@ $( document ).ready(function() {
 
     function popupResult(result) {
         console.log("popping up result...");
+        var status = "success";
         var html;
         if (result.html) {
             html = result.html;
         }
-        if (result.src) {
+        if (result.src != "") {
+            alert(result.src);
             html = '<img src="' + result.src + '" />';
+        }else{
+          status = "error";
         }
+
         $('body').append(html);
         Swal.fire({
-           title: "Cropped Image",
+           title: "Image Upload",
            imageUrl: result.src,
             type: "success"
         });
@@ -103,6 +108,7 @@ $( document ).ready(function() {
 
     function base64Upload(str,filename){
         //console.log(str);
+        popupResult({src:str});
         alert('attempting to upload image via base 64');
         test = {img:str};
         console.log(test);
@@ -127,23 +133,12 @@ $( document ).ready(function() {
 
     $('#upload').on('change', function () { readFile(this); });
     $('.upload-result').on('click', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-            //console.log(typeof(resp));
-            //console.log(resp);
-            //console.log($('#hiddenupload'));
-            //$('#hiddenupload').val(resp);
-            //console.log($('#hiddenupload'));
-            popupResult({
-                src: resp
-            });
+        
+                        
             filename = $('#upload').val().replace(/C:\\fakepath\\/i, '');
-            base64Upload(resp,filename);
+            base64Upload(toUpload,filename);
             //$('#fileupload').submit();
             //uploadResult({src:resp});
-        });
     });
 
 });

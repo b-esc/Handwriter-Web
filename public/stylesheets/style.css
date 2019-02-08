@@ -1,3 +1,18 @@
+#croppie-targ{
+  /*width: 100%;
+   */
+}
+
+#thumbnail-container{
+  }
+
+#thumbnail-targ{
+  display: inline-block;
+  background-size:contain;
+  background-repeat:no-repeat;
+  height:250px;
+  width:250px;
+  }
 
 a {
   color: #00B7FF;

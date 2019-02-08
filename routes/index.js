@@ -35,5 +35,7 @@ router.get('/docsingle',function(req,res){
     res.render('docsingle',{layout:'main.hbs'});
 });
 
-
+router.get('/docsingle_nc',function(req,res){
+  res.render('docsingle_nc',{layout:'main.hbs'});
+})
 module.exports = router;
