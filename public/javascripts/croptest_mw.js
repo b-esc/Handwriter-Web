@@ -35,7 +35,7 @@ $( document ).ready(function() {
         if (result.src) {
             html = '<img src="' + result.src + '" />';
         }
-        $('body').append(html);
+        //$('body').append(html);
         Swal.fire({
            title: "Cropped Image",
            imageUrl: result.src,

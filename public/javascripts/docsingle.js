@@ -2,6 +2,10 @@ $( document ).ready(function() {
     var $uploadCrop;
     var toUpload;
 
+  $('#crop-redir').click(function(){
+    window.location.href='/docsingle';
+  })
+
     function readFile(input) {
       alert('file bein read');
         if (input.files && input.files[0]) {
@@ -40,7 +44,7 @@ $( document ).ready(function() {
           status = "error";
         }
 
-        $('body').append(html);
+        //$('body').append(html);
         Swal.fire({
            title: "Image Upload",
            imageUrl: result.src,
@@ -69,6 +73,7 @@ $( document ).ready(function() {
     //its too early to probably do type checking
 
     function displayFeatures(features,filename){
+        //this is because list() in R packs it as 0th index element array of json objects
         features = features[0];
         var html = "<table class='table'>";
         html += "<thead><tr>";

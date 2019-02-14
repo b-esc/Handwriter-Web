@@ -1,31 +1,32 @@
-var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017/local";
 var router = require("../routes/index");
-var fs = require('fs');
-var path = require('path');
-const request = require('request');
+var fs = require("fs");
+var path = require("path");
+const request = require("request");
 var app = require("../app");
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 mongoose.connect(url);
-var multer = require('multer');
+var multer = require("multer");
 
 var db = mongoose.connection;
-db.on('error',()=>{
-    console.log('error while connecting');
+db.on("error", () => {
+  console.log("error while connecting");
 });
-db.once('open',()=>{
-    console.log('hey weve connected to mongodb');
+db.once("open", () => {
+  console.log("hey weve connected to mongodb");
 });
 
 var imageSchema = new mongoose.Schema({
-    name: String,
-    image: Buffer
+  name: String,
+  image: Buffer,
+  date: String,
+  data: []
 });
 
+const Image = mongoose.model("Image", imageSchema);
 
-const Image = mongoose.model('Image',imageSchema);
-
-router.post('/fileUpload',(req,res)=>{
+/*router.post('/fileUpload',(req,res)=>{
     try {
         //console.log(JSON.stringify(req));
         console.log('did we even hit router.post?');
@@ -47,26 +48,68 @@ router.post('/fileUpload',(req,res)=>{
         });
     }catch(err){console.log(err)}
    //res.send(req);
+});*/
+
+
+/*Image.find({},function(err,images){
+    images.forEach(function(image){
+      console.log(image);
+    })
+  });*/
+
+router.post("/allResults", (req,res)=>{
+  Image.find({},function(err,images){
+    console.log(images);
+  });
 });
 
-function getFeatures(fileName,callback){
-    console.log("incoming file: " + fileName);
-    var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
-    request(url,(err,res,body) =>{
-        if(!err && res.statusCode == 200){
-            return callback(body);
-            //return JSON.parse(body);
-        }
-        else throw(err);
+router.post("/fileUpload", (req, res) => {
+
+    try {
+    filename = req.body.filename;
+    base64imgstr = new Buffer(req.body.img.split(",")[1], "base64");
+    saveBase64StrLocal(filename, base64imgstr);
+    getFeatures(filename, data => {
+      var toSave = new Image({
+        name: filename,
+        image: base64imgstr,
+        date: Date(Date.now),
+        data: JSON.parse(data)
+      });
+      toSave.save(function(err){
+        console.log("saved to database");
+      });
     });
+
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+});
+
+function getFeatures(fileName, callback) {
+  console.log("incoming file: " + fileName);
+  var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
+  request(url, (err, res, body) => {
+    if (!err && res.statusCode == 200) {
+      return callback(body);
+      //return JSON.parse(body);
+    } else throw err;
+  });
 }
 
-function saveBase64StrLocal(fileName, b64ImgStr){
-    fs.writeFile(__dirname + "/../uploads/"+fileName,b64ImgStr,'base64',(err) => {
-        if(err) throw err;
-        else console.log('saved image!!');
-    });
+function saveBase64StrLocal(fileName, b64ImgStr) {
+  fs.writeFile(
+    __dirname + "/../uploads/" + fileName,
+    b64ImgStr,
+    "base64",
+    err => {
+      if (err) throw err;
+      else console.log("saved image locally");
+    }
+  );
 }
+
 
 // app.post('/r_img_plumb',function(req,res){
 //     const img_name = req.body.img_name;
@@ -104,31 +147,3 @@ upload: just upload images to mongodb..
 process: process and get
 analyze handwriting:
  */
-
-// var storage = multer.diskStorage({
-//     destination: (req,file,cb) =>{
-//         cb(null,'public/uploaded')
-//     },
-//     filename: (req,file,cb) => {
-//         cb(null,file.fieldname + '-' + Date.now())
-//     }
-// });
-// var upload = multer({storage:storage});
-//
-
-//
-// var uploadDocuments = function(db,colname,path,callback){
-//     var collection = db.collection(colname);
-//     collection.insertOne({'imagePath':filePath})
-// }
-// MongoClient.connect(url, function(err, client) {
-//     if (err) throw err;
-//     var db = client.db('local');
-//     console.log("Database connected!");
-//     var collection = db.collection('test').find();
-//     //console.log(cursor);
-//     collection.forEach(function(result){
-//         console.log(JSON.stringify(result));
-//     });
-//     client.close();
-// });
