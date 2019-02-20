@@ -59,7 +59,8 @@ const Image = mongoose.model("Image", imageSchema);
 
 router.post("/allResults", (req,res)=>{
   Image.find({},function(err,images){
-    console.log(images);
+    res.send(images);
+    //console.log(images);
   });
 });
 

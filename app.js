@@ -35,6 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 // app.use('/public',express.static(path.join(__dirname, '/public')));
 //app.use('/rplumber',express.static(path.join(__dirname, '/rplumber')));

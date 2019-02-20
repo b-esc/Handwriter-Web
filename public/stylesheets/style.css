@@ -5,7 +5,21 @@
 
 #thumbnail-container{
   }
-
+  .ib{
+    display: inline-block;
+  }
+  .card{
+    border: 2px solid;
+    display: inline-block;
+    margin: 3px;
+  }
+.card-img-top{
+  background-size:contain;
+  background-repeat:no-repeat;
+  height: 12rem;
+  border: 2px solid;
+  padding: 2px;
+}
 #thumbnail-targ{
   display: inline-block;
   background-size:contain;
@@ -35,6 +49,9 @@ a {
 .result-block{
   height:100%;
   width:100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 10px;
   background:white;
   border: 2px solid;
   border-radius: 25px;
