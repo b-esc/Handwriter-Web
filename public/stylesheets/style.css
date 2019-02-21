@@ -2,7 +2,12 @@
   /*width: 100%;
    */
 }
-
+.modal-dialog{
+  max-width: none;
+}
+.modal-content{
+  width: none;
+}
 #thumbnail-container{
   }
   .ib{

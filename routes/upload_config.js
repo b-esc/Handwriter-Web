@@ -1,8 +1,14 @@
 //https://thejackalofjavascript.com/uploading-files-made-fun/ just testing it
-var options = {
+/*
     tmpDir: './public/uploaded/tmp',
     uploadDir: './public/uploaded/files',
     uploadUrl:  '/uploaded/files/',
+*/
+
+var options = {
+    tmpDir: './uploads/tmp',
+    uploadDir: './uploads/unprocessed/',
+    uploadUrl:  '/unprocessed/',
     maxPostSize: 11000000000, // 11 GB
     minFileSize: 1,
     maxFileSize: 10000000000, // 10 GB
@@ -20,7 +26,7 @@ var options = {
         allowMethods: 'OPTIONS, HEAD, GET, POST, PUT, DELETE',
         allowHeaders: 'Content-Type, Content-Range, Content-Disposition'
     },
-    storages : [{type : 'local', tmpDir: './public/uploaded/tmp',uploadDir: './public/uploaded/files', uploadUrl:  './uploaded/files/',}],
+    storages : [{type : 'local', tmpDir: './uploads/tmp',uploadDir: './uploads/unprocessed', uploadUrl:  '/unprocessed',}],
     storage : {
         type : 'local',
     },
@@ -48,7 +54,8 @@ module.exports = function(router) {
 
     });
 
-    router.delete('/uploaded/files/:name', function(req, res) {
+    router.delete('/uploads/unprocessed/:name', function(req, res) {
+        /*in addition to delete, process and refactor this function to processing*/
         uploader.delete(req, res, function(err, obj) {
             res.send(JSON.stringify(obj));
         });
