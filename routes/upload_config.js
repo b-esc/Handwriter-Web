@@ -54,7 +54,7 @@ module.exports = function(router) {
 
     });
 
-    router.delete('/uploads/unprocessed/:name', function(req, res) {
+    router.delete('/unprocessed/:name', function(req, res) {
         /*in addition to delete, process and refactor this function to processing*/
         uploader.delete(req, res, function(err, obj) {
             res.send(JSON.stringify(obj));
