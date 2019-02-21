@@ -7,7 +7,9 @@
 
 <div class="container">
     <br/>
-    <label>if styling finicky uncomment body in public stylesheets</label>
+    <div class="alert alert-dark" role="alert">
+        Experimental Batch Upload
+    </div>
     <hr/>
     <!-- The file upload form used as target for the file upload widget -->
     <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data">
@@ -30,8 +32,8 @@
                     <span>Cancel upload</span>
                 </button>
                 <button type="button" class="btn btn-info delete">
-                    <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
+                    <i class="glyphicon glyphicon-refresh"></i>
+                    <span>Process</span>
                 </button>
                 <input type="checkbox" class="toggle">
                 <!-- The global file processing state -->
@@ -126,9 +128,9 @@
         </td>
         <td>
             {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-                    <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
+                <button class="btn btn-info delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="glyphicon glyphicon-refresh"></i>
+                    <span>Process</span>
                 </button>
                 <input type="checkbox" name="delete" value="1" class="toggle">
             {% } else { %}
