@@ -1,30 +1,29 @@
-var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017/local";
+//var MongoClient = require("mongodb").MongoClient;
+//var url = "mongodb://localhost:27017/local";
+var dbutils = require('./dbutils');
 var router = require("../routes/index");
 var fs = require("fs");
 var path = require("path");
 const request = require("request");
 var app = require("../app");
-var mongoose = require("mongoose");
-mongoose.connect(url);
-var multer = require("multer");
+//var mongoose = require("mongoose");
+//mongoose.connect(url);
+// var multer = require("multer");
+//
+// var db = mongoose.connection;
+// db.on("error", () => {
+//   console.log("error while connecting");
+// });
+// db.once("open", () => {
+//   console.log("hey weve connected to mongodb");
+// });
 
-var db = mongoose.connection;
-db.on("error", () => {
-  console.log("error while connecting");
-});
-db.once("open", () => {
-  console.log("hey weve connected to mongodb");
-});
-
-var imageSchema = new mongoose.Schema({
-  name: String,
-  image: Buffer,
-  date: String,
-  data: []
-});
-
-const Image = mongoose.model("Image", imageSchema);
+// var imageSchema = new mongoose.Schema({
+//   name: String,
+//   image: Buffer,
+//   date: String,
+//   data: []
+// });
 
 /*router.post('/fileUpload',(req,res)=>{
     try {
@@ -58,10 +57,15 @@ const Image = mongoose.model("Image", imageSchema);
   });*/
 
 router.post("/allResults", (req,res)=>{
-  Image.find({},function(err,images){
-    res.send(images);
-    //console.log(images);
-  });
+    try {
+        dbutils.Image.find({}, function (err, images) {
+            res.send(images);
+            //console.log(images);
+        });
+    }catch(err){
+        console.log(err);
+        throw(err);
+    }
 });
 
 router.post("/fileUpload", (req, res) => {
@@ -69,9 +73,9 @@ router.post("/fileUpload", (req, res) => {
     try {
     filename = req.body.filename;
     base64imgstr = new Buffer(req.body.img.split(",")[1], "base64");
-    saveBase64StrLocal(filename, base64imgstr);
-    getFeatures(filename, data => {
-      var toSave = new Image({
+    dbutils.saveBase64StrLocal(filename, base64imgstr);
+    dbutils.getFeatures(filename, data => {
+      var toSave = new dbutils.Image({
         name: filename,
         image: base64imgstr,
         date: Date(Date.now),
@@ -88,28 +92,28 @@ router.post("/fileUpload", (req, res) => {
   }
 });
 
-function getFeatures(fileName, callback) {
-  console.log("incoming file: " + fileName);
-  var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
-  request(url, (err, res, body) => {
-    if (!err && res.statusCode == 200) {
-      return callback(body);
-      //return JSON.parse(body);
-    } else throw err;
-  });
-}
-
-function saveBase64StrLocal(fileName, b64ImgStr) {
-  fs.writeFile(
-    __dirname + "/../uploads/" + fileName,
-    b64ImgStr,
-    "base64",
-    err => {
-      if (err) throw err;
-      else console.log("saved image locally");
-    }
-  );
-}
+// function getFeatures(fileName, callback) {
+//   console.log("incoming file: " + fileName);
+//   var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
+//   request(url, (err, res, body) => {
+//     if (!err && res.statusCode == 200) {
+//       return callback(body);
+//       //return JSON.parse(body);
+//     } else throw err;
+//   });
+// }
+//
+// function saveBase64StrLocal(fileName, b64ImgStr) {
+//   fs.writeFile(
+//     __dirname + "/../uploads/" + fileName,
+//     b64ImgStr,
+//     "base64",
+//     err => {
+//       if (err) throw err;
+//       else console.log("saved image locally");
+//     }
+//   );
+// }
 
 
 // app.post('/r_img_plumb',function(req,res){

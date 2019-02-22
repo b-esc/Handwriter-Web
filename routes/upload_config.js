@@ -4,7 +4,7 @@
     uploadDir: './public/uploaded/files',
     uploadUrl:  '/uploaded/files/',
 */
-
+var mutil = require('../database/dbutils.js');
 var options = {
     tmpDir: './uploads/tmp',
     uploadDir: './uploads/unprocessed/',
@@ -56,6 +56,14 @@ module.exports = function(router) {
 
     router.delete('/unprocessed/:name', function(req, res) {
         /*in addition to delete, process and refactor this function to processing*/
+        console.log('\n\n PROCESSING BATCH \n\n');
+        console.log(req.params.name);
+        try{
+        mutil.processFileBatch(req.params.name);
+        }catch(err){
+          console.log(err);
+          throw(err);
+        }
         uploader.delete(req, res, function(err, obj) {
             res.send(JSON.stringify(obj));
         });
