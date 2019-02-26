@@ -28,111 +28,114 @@
 
     <!--<script src="/public/javascripts/rplumber/eptest.js"></script>-->
     <script src="/javascripts/eptest_middleware.js"></script>
+    <script src="/particles.js/particles.js"></script>
+    <script src="/javascripts/particletest_mw.js"></script>
 </head>
 
 <body>
 <nav id="headerbar">
     <div class="row">
-        <div class="col-sm text-center">
+        <div class="col-sm-4 text-center">
             <img src="/images/csafelogo_small.png" class="img-fluid">
         </div>
-        <div class="col-sm text-center">
+        <div class="col-sm-4 text-center">
             <strong onclick="window.location='/'" class="f_csafe_title">HANDWRITER</strong>
         </div>
-        <div class="col-sm text-center">
+        <div class="col-sm-4 text-center">
             <img src="/images/nistlogo.jpg" class="img-fluid">
         </div>
     </div>
 </nav>
+<div id="particles-js">
+  <div id="wrapper">
 
-<div id="wrapper">
+      <!-- SidebarR -->
+      <div id="sidebar-wrapperR">
+          <ul class="sidebar-navR">
+              <li class="sidebar-brandR">
+                  <a href="#">
+                      RIGHT
+                  </a>
+              </li>
+              <li>
+                  <a href="#">1</a>
+              </li>
+              <li>
+                  <a href="#">2</a>
+              </li>
+              <li>
+                  <a href="#">3</a>
+              </li>
+              <li>
+                  <a href="#">4</a>
+              </li>
+              <li>
+                  <a href="#">5</a>
+              </li>
+              <li>
+                  <a href="#">6</a>
+              </li>
+              <li>
+                  <a href="#">7</a>
+              </li>
+          </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+              <li class="sidebar-brand">
+                  <a href="#">
+                      LEFT
+                  </a>
+              </li>
+              <li>
+                  <a href="#">1</a>
+              </li>
+              <li>
+                  <a href="#">2</a>
+              </li>
+              <li>
+                  <a href="#">3</a>
+              </li>
+              <li>
+                  <a href="#">4</a>
+              </li>
+              <li>
+                  <a href="#">5</a>
+              </li>
+              <li>
+                  <a href="#">6</a>
+              </li>
+              <li>
+                  <a href="#">7</a>
+              </li>
+          </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
 
-    <!-- SidebarR -->
-    <div id="sidebar-wrapperR">
-        <ul class="sidebar-navR">
-            <li class="sidebar-brandR">
-                <a href="#">
-                    RIGHT
-                </a>
-            </li>
-            <li>
-                <a href="#">1</a>
-            </li>
-            <li>
-                <a href="#">2</a>
-            </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">5</a>
-            </li>
-            <li>
-                <a href="#">6</a>
-            </li>
-            <li>
-                <a href="#">7</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    LEFT
-                </a>
-            </li>
-            <li>
-                <a href="#">1</a>
-            </li>
-            <li>
-                <a href="#">2</a>
-            </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">5</a>
-            </li>
-            <li>
-                <a href="#">6</a>
-            </li>
-            <li>
-                <a href="#">7</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      {{{body}}}
+      <!--<div id="page-content-wrapper">-->
+          <!--<div class="container-fluid">-->
+              <!--<h1>Simple Sidebar</h1>-->
+              <!--<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>-->
+              <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
+              <!--<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>-->
 
-    <!-- Page Content -->
-    {{{body}}}
-    <!--<div id="page-content-wrapper">-->
-        <!--<div class="container-fluid">-->
-            <!--<h1>Simple Sidebar</h1>-->
-            <!--<p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>-->
-            <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
-            <!--<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>-->
+          <!--</div>-->
+          <!--<div id="image-cropper">-->
+              <!--<div class="cropit-preview"></div>-->
 
-        <!--</div>-->
-        <!--<div id="image-cropper">-->
-            <!--<div class="cropit-preview"></div>-->
+              <!--<input type="range" class="cropit-image-zoom-input" />-->
 
-            <!--<input type="range" class="cropit-image-zoom-input" />-->
+              <!--<input type="file" class="cropit-image-input" />-->
+              <!--<div class="select-image-btn">Select new image</div>-->
+          <!--</div>-->
+      <!--</div>-->
+      <!-- /#page-content-wrapper -->
 
-            <!--<input type="file" class="cropit-image-input" />-->
-            <!--<div class="select-image-btn">Select new image</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!-- /#page-content-wrapper -->
-
+  </div>
 </div>
 <!-- /#wrapper -->
 
