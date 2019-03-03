@@ -68,6 +68,23 @@ router.post("/allResults", (req,res)=>{
     }
 });
 
+router.get("/inspectImage/*",(req,res) =>{
+  res.render('inspectdoc',{layout:'main.hbs'});
+});
+
+router.get("/inspectGet/:name" , (req,res) =>{
+  //res.send("name is " + req.params.name);
+    try{
+    dbutils.Image.find({name:req.params.name},function(err,info){
+      //console.log(info);
+      res.send(info);
+    });
+  }catch(err){
+    console.log(err);
+    throw(err);
+  }
+});
+
 router.post("/fileUpload", (req, res) => {
 
     try {
@@ -152,3 +169,4 @@ upload: just upload images to mongodb..
 process: process and get
 analyze handwriting:
  */
+module.exports = router;

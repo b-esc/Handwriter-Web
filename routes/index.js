@@ -43,4 +43,8 @@ router.get('/results', function(req, res) {
   res.render('results', {layout: 'main.hbs'});
 });
 
+router.get('/inspectdoc', function(req, res) {
+  res.render('inspectdoc', {layout: 'main.hbs'});
+});
+
 module.exports = router;

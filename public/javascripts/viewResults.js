@@ -38,7 +38,7 @@ function featuresToTable(features){
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#info${i}">
                   View Data
                 </button>
-                <button type="button" class="btn btn-secondary">
+                <button type="button" class="btn btn-secondary" onclick="window.location='/inspectImage/${data[i].name}'">
                   Analyze
                 </button>
             </div>

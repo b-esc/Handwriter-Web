@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/db',dbRouter);
 var rplumber = require('./routes/rplumber/eptest.js');
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
