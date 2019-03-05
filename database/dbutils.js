@@ -24,7 +24,7 @@ const Image = mongoose.model("Image", imageSchema);
 
 function getFeatures(fileName, callback) {
   console.log("incoming file: " + fileName);
-  var url = `http://127.0.0.1:6550/plumbFeatures?img_name=${fileName}`;
+  var url = `http://127.0.0.1:7277/plumbFeatures?img_name=${fileName}`;
   request(url, (err, res, body) => {
     if (!err && res.statusCode == 200) {
       return callback(body);
@@ -37,7 +37,7 @@ module.exports = {
   Image: Image,
   getFeatures: function(fileName, callback) {
   console.log("incoming file: " + fileName);
-  var url = `http://127.0.0.1:5158/plumbFeatures?img_name=${fileName}`;
+  var url = `http://127.0.0.1:7277/plumbFeatures?img_name=${fileName}`;
   request(url, (err, res, body) => {
     if (!err && res.statusCode == 200) {
       return callback(body);

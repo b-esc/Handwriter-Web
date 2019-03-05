@@ -72,6 +72,21 @@ router.get("/inspectImage/*",(req,res) =>{
   res.render('inspectdoc',{layout:'main.hbs'});
 });
 
+
+/**
+ * March 19 Interactive Feature Approach
+ * Last Weekend: Enabled single queries / image viewing..
+ * AddLetterImages works
+ * 0. Handle binary images -> jpg/png images in and out of mongodb to browser
+ * 1. Insert features into mongo with letterImages
+ * 2. Dump all letters into page
+ * 3. Look at old python pixel proportion project for handling image modification / highlights
+ * 4. Add individual letters to appear onclick of each row of any "Results" table
+ * 5. Enable click to feature
+ * 6. Prune unneeded features
+ * 7. Grouping project..
+ * 8. Synch grouping with individual feature pruning
+ */
 router.get("/inspectGet/:name" , (req,res) =>{
   //res.send("name is " + req.params.name);
     try{
