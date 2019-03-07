@@ -12,7 +12,9 @@ $(document).ready(function() {
     $("#inspectTarg img").attr('src',`/${data[0].name}`);
     letterSrc = `<img src='/LetterPlots/${data[0].name}/`;
     for(var i = 1; i <= data[0].letterCount; i++){
-      $("#inspectTarg").append(`${letterSrc}+${i}+/>'`);
+      stuff = `${letterSrc}letter${i}.png'/>`;
+      console.log(stuff);
+      $("#inspectTarg").append(stuff);
       }
     console.log(data[0].name);
   });
