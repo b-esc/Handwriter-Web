@@ -5,11 +5,17 @@ $(document).ready(function() {
    */
   argArray = window.location.pathname.split('/');
   $.get('/inspectGet/'+argArray[2], (data, status) =>{
-    newImg = `<img id=${data[0].name} src=''/>`
+    newImg = `<img id=${data[0].name} src=''/>`;
     //newImg = '<a>hey</a>'
+    //lets you iterate through linked dir
+    console.log(data);
     $("#inspectTarg img").attr('src',`/${data[0].name}`);
+    letterSrc = `<img src='/LetterPlots/${data[0].name}/`;
+    for(var i = 1; i <= data[0].letterCount; i++){
+      $("#inspectTarg").append(`${letterSrc}+${i}+/>'`);
+      }
     console.log(data[0].name);
-  })
+  });
   alert(argArray[2]);
   //$.get()
 /*  $.ajax({

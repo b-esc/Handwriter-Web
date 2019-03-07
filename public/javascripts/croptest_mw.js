@@ -84,7 +84,7 @@ $( document ).ready(function() {
     }
     //nogo probably
     function uploadResult(result){
-        alert('attempting upload result');
+        //alert('attempting upload result');
         let image = result.src;
         console.log(image);
         $.ajax({
@@ -103,7 +103,7 @@ $( document ).ready(function() {
 
     function base64Upload(str,filename){
         //console.log(str);
-        alert('attempting to upload image via base 64');
+        //alert('attempting to upload image via base 64');
         test = {img:str};
         console.log(test);
         $.ajax({

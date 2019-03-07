@@ -7,7 +7,7 @@ $( document ).ready(function() {
   })
 
     function readFile(input) {
-      alert('file bein read');
+      //alert('file bein read');
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -38,7 +38,7 @@ $( document ).ready(function() {
             html = result.html;
         }
         if (result.src != "") {
-            alert(result.src);
+            //alert(result.src);
             html = '<img src="' + result.src + '" />';
         }else{
           status = "error";
@@ -94,7 +94,7 @@ $( document ).ready(function() {
     }
     //nogo probably
     function uploadResult(result){
-        alert('attempting upload result');
+        //alert('attempting upload result');
         let image = result.src;
         console.log(image);
         $.ajax({
@@ -114,7 +114,7 @@ $( document ).ready(function() {
     function base64Upload(str,filename){
         //console.log(str);
         popupResult({src:str});
-        alert('attempting to upload image via base 64');
+        //alert('attempting to upload image via base 64');
         test = {img:str};
         console.log(test);
         $.ajax({

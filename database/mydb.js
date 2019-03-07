@@ -91,8 +91,17 @@ router.get("/inspectGet/:name" , (req,res) =>{
   //res.send("name is " + req.params.name);
     try{
     dbutils.Image.find({name:req.params.name},function(err,info){
-      //console.log(info);
-      res.send(info);
+      //console.log(__dirname + "/../uploads/LetterPlots/"+info[0].name+"/");
+      // fs.readdir(__dirname + "/../uploads/LetterPlots/"+info[0].name,(err,files)=>{
+      //     if(err){
+      //         console.log(err);
+      //         throw(err);
+      //     }
+      //     console.log("yoooo files length :" + files.length);
+      //     info[0].letterCount = files.length;
+      //     res.send(info);
+      // });
+        res.send(info);
     });
   }catch(err){
     console.log(err);
@@ -101,27 +110,36 @@ router.get("/inspectGet/:name" , (req,res) =>{
 });
 
 router.post("/fileUpload", (req, res) => {
-
     try {
-    filename = req.body.filename;
-    base64imgstr = new Buffer(req.body.img.split(",")[1], "base64");
-    dbutils.saveBase64StrLocal(filename, base64imgstr);
-    dbutils.getFeatures(filename, data => {
-      var toSave = new dbutils.Image({
-        name: filename,
-        image: base64imgstr,
-        date: Date(Date.now),
-        data: JSON.parse(data)
-      });
-      toSave.save(function(err){
-        console.log("saved to database");
-      });
-    });
+        filename = req.body.filename;
+        base64imgstr = new Buffer(req.body.img.split(",")[1], "base64");
+        dbutils.saveBase64StrLocal(filename, base64imgstr);
+        dbutils.getFeatures(filename, data => {
 
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
+            fs.readdir(__dirname + "/../uploads/LetterPlots/" + filename, (err, files) => {
+                if (err) {
+                    console.log(err);
+                    throw(err);
+                }
+                console.log("yoooo files length **^SLAT:" + files.length);
+                var toSave = new dbutils.Image({
+                    name: filename,
+                    letterCount: files.length,
+                    date: Date(Date.now),
+                    data: JSON.parse(data)
+                });
+                toSave.save(function (err) {
+                    console.log("saved to database");
+                });
+            });
+
+
+        });
+
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
 });
 
 // function getFeatures(fileName, callback) {
