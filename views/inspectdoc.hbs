@@ -1,5 +1,33 @@
 <div id="page-content-wrapper">
-    <script src="/javascripts/inspectDoc.js"></script> <div class="btn-container">
+    <script src="/javascripts/inspectDoc.js"></script>
+    <div class="options-container">
+        <div class="row text-center">
+            <div class="col-sm">
+                <button id="thinned" type="button" class="btn btn-light">
+                    View Thinned
+                </button>
+            </div>
+            <div class="col-sm">
+                <button id="both" type="button" class="btn btn-light">
+                    View Both
+                </button>
+
+            </div>
+            <div class="col-sm">
+                <button id="og" type="button" class="btn btn-light">
+                    View Original
+                </button>
+
+            </div>
+            <div class="col-sm">
+                <button id="og" type="button" class="btn btn-light" data-toggle="modal" data-target="#info1">
+                    View Data
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="btn-container">
         <div class="container text-center">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.css" />
                 <div id="croppie-targ"></div>
@@ -18,4 +46,5 @@
             <!--<br><br>--> <!--<button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</button>-->
         </div>
     </div>
+    <div id="append-targ"></div>
 </div>

@@ -28,7 +28,7 @@ function featuresToTable(features){
     for (let i = 0; i < data.length; i++) {
       console.log(data[i]);
       let uploadInstance = `<div class="card" style="width: 18rem;">
-          <img class="card-img-top" src='/${data[i].name}'></img>
+          <img class="card-img-top" src='/OGImages/${data[i].name}'></img>
           <div class="card-body">
             <h5 class="card-title">${data[i].name}</h5>
             <br>

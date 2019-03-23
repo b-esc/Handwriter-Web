@@ -68,6 +68,17 @@ router.post("/allResults", (req,res)=>{
     }
 });
 
+router.post("/targResults", (req,res)=>{
+    console.log(req);
+    try{
+        dbutils.Image.find({name:req.body.targ},(err,images)=>{
+            res.send(images);
+        });
+    } catch(err){
+        console.log(err);
+        throw(err);
+    }
+});
 router.get("/inspectImage/*",(req,res) =>{
   res.render('inspectdoc',{layout:'main.hbs'});
 });
@@ -109,6 +120,7 @@ router.get("/inspectGet/:name" , (req,res) =>{
   }
 });
 
+//i believe this to be the main
 router.post("/fileUpload", (req, res) => {
     try {
         filename = req.body.filename;
@@ -129,7 +141,13 @@ router.post("/fileUpload", (req, res) => {
                     data: JSON.parse(data)
                 });
                 toSave.save(function (err) {
-                    console.log("saved to database");
+                    if(err){
+                        console.log("error in database");
+                        throw(err);
+                    }
+                    else {
+                        console.log("saved to database");
+                    }
                 });
             });
 

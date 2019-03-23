@@ -47,7 +47,7 @@ module.exports = {
     },
     saveBase64StrLocal: function (fileName, b64ImgStr) {
         fs.writeFile(
-            __dirname + "/../uploads/" + fileName,
+            __dirname + "/../uploads/OGImages/" + fileName,
             b64ImgStr,
             "base64",
             err => {

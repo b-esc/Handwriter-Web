@@ -1,0 +1,20 @@
+I intend on planning / highlighting progress in this directory,
+instead of segregating it to one of the 5 repos Handwriter spans.
+
+Image Analyze is my priority over break.
+
+To summate, I want the user to interact with an uploaded sample by clicking on a letter / filter.
+
+Step 0 is including filters, to see the thinned, unthinned, and both plots upon click.
+
+Step * : risk a bunch sof hours using opencv for dynamic image detection
+probably gonna try this because this experience will follow me through the project
+
+Step 1 is addressing issues before implementing ((or burning 15 hours by strugging with css :p :p))
+
+ISSUE: Unfixed images,
+
+We must fix images to a certain size for my program to know where to highlight.
+
+Theres 0 connection between the letters and their positions of the original document, except from my features.
+

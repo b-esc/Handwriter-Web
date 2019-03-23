@@ -85,10 +85,23 @@ a {
     position: absolute;
     top: 50%;
     right: 50%;
-    transform: translate(50%,10%);
+    transform: translate(50%,15%);
     /*max-width: 90%;*/
     padding: 2em 3em;
     background: #ffffff;
+    text-shadow: 0px 0px 2px #131415;
+    font-family: 'Open Sans', sans-serif;
+    border-style:outset;
+}
+
+.options-container{
+    position: absolute;
+    top: 30%;
+    right: 50%;
+    transform: translate(50%,10%);
+    /*max-width: 90%;*/
+    padding: 2em 3em;
+    background: #cccccc;
     text-shadow: 0px 0px 2px #131415;
     font-family: 'Open Sans', sans-serif;
     border-style:outset;
