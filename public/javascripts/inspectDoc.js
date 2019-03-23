@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
     function showLetter(letterid){
         Swal.fire({
             title: `${letterid} in ${argArray[2]}`,
@@ -26,11 +28,16 @@ $(document).ready(function () {
         for (var i = 1; i <= data[0].letterCount; i++) {
             stuff = `${letterSrc}letter${i}.png'/>`;
             console.log(stuff);
-            $("#inspectTarg").append(stuff);
+            //$("#inspectTarg").append(stuff);
         }
         console.log(data[0].name);
     });
-
+    $('#thinned').click(()=>{
+        $("#inspectTarg img").attr('src', `/ThinImages/${argArray[2]}_thinned.png`); //gross
+    });
+    $('#og').click(()=>{
+        $("#inspectTarg img").attr('src', `/OGImages/${argArray[2]}`);
+    });
     //duplicate code, wanted to change the layout however..
     function modalTable(data) {
 
