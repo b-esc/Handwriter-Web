@@ -1,4 +1,16 @@
 $(document).ready(function () {
+    function showLetter(letterid){
+        Swal.fire({
+            title: `${letterid} in ${argArray[2]}`,
+            imageUrl: `/LetterPlots/${argArray[2]}/${letterid}.png`,
+            type: "info",
+        });
+    }
+    $(document).on('click','[id^=letter]',function(e){
+       ogId = e.currentTarget.id;
+       showLetter(ogId);
+       console.log(ogId);
+    });
     /*
      * argArray handles various arguments
      * argArray[2], intended for a single doc name
@@ -18,7 +30,6 @@ $(document).ready(function () {
         }
         console.log(data[0].name);
     });
-    alert(argArray[2]);
 
     //duplicate code, wanted to change the layout however..
     function modalTable(data) {
@@ -29,7 +40,7 @@ $(document).ready(function () {
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Features for argArray[2]</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Features for ${argArray[2]}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -53,15 +64,19 @@ $(document).ready(function () {
     function featuresToTable(features){
         //this is because list() in R packs it as 0th index element array of json objects
         features = features[0];
-        var html = "<table class='table table-bordered table-dark'>";
+        var html = "<table class='table table-bordered table-sm table-responsive-sm table-hover'>";
         html += "<thead><tr>";
         for(var arr1 in features[0]){
             html += "<th scope='col'>" + arr1 + "</th>";
         }
         html+="</tr></thead><tbody>";
         for(var i = 0; i < features.length; i++){
-            html += "<tr>";
+            targIndex = i+1;
+            targId = `letter${targIndex}`;
+            html += `<tr id=${targId}>`;
+            //html += `<tr onclick='function(){showLetter(${targIndex})}'>`;
             for(var prop in features[i]){
+                if(features[i][prop].length > 15) features[i][prop] = "...";
                 html += "<td>" + features[i][prop] + "</td>";
             }
             html += "</tr>"
@@ -71,6 +86,8 @@ $(document).ready(function () {
         return html;
     }
 
+
+
     $.ajax({
         type: "POST",
         data: JSON.stringify({ targ: argArray[2] }),
@@ -78,8 +95,6 @@ $(document).ready(function () {
         contentType: "application/json",
         url: "/targResults",
         success: function(data) {
-            console.log(data);
-            alert("success on ajax");
             modalTable(data);
             //console.log(data);
         },
