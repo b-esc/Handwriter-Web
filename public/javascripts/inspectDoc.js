@@ -1,5 +1,19 @@
 $(document).ready(function () {
-
+    //this is a massive hack lol
+    //two test
+    /*
+    var elem = document.getElementById('draw-shapes');
+    var params = {width:285,height:200};
+    var two = new Two(params).appendTo(elem);
+    var circle = two.makeCircle(72,100,50);
+    var rect = two.makeRectangle(213, 100, 100, 100);
+    circle.fill = '#FF8000';
+    circle.stroke = 'orangered';
+    circle.linewidth = 0;
+    var godpls = "<image xlink:href='/OGImages/Writing_csafe_all.png' x='0' y='0' height='200px' width='600px'></image>";
+    document.querySelector("svg").innerHTML += godpls;
+    two.update();
+    */
 
     function showLetter(letterid){
         Swal.fire({
