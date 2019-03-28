@@ -23,8 +23,9 @@ $(document).ready(function () {
      */
     argArray = window.location.pathname.split('/');
     var filename = argArray[2];
-    var draw = buildDrawingInstance(`/ThinImages/${filename}_thinned.png`,'inspectTarg',1048,612);
+    var draw = buildDrawingInstance(`/ThinImages/${filename}_thinned.png`,'inspectTarg',1100,800);
     drawCircle(draw,5,5,2);
+    drawCircle(draw,770,556,2);
     draw.update();
 
     /*$.get('/inspectGet/' + filename, (data, status) => {
@@ -64,6 +65,7 @@ $(document).ready(function () {
             type: "info",
         });
     }
+
     $(document).on('click','[id^=letter]',function(e){
         ogId = e.currentTarget.id;
         showLetter(ogId);
@@ -78,6 +80,7 @@ $(document).ready(function () {
         contentType: "application/json",
         url: "/targResults",
         success: function(data) {
+            console.log(data);
             addTableToPage(data,'#append-targ');
             //console.log(data);
         },

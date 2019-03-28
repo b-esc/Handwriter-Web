@@ -6,6 +6,7 @@ var fs = require("fs");
 var path = require("path");
 const request = require("request");
 var app = require("../app");
+var sizeOf = require('image-size');
 //var mongoose = require("mongoose");
 //mongoose.connect(url);
 // var multer = require("multer");
@@ -70,8 +71,15 @@ router.post("/allResults", (req,res)=>{
 
 router.post("/targResults", (req,res)=>{
     console.log(req);
+    /*
+    Probably will need to scrape file sizes of ALL
+    types of files (ideally all 3, thinned, og, and thinnedOG)
+    Unless files are standardized / fixed.
+     */
+    sizeOf('/ThinImages/'+req.body.targ+'_thinned')
     try{
         dbutils.Image.find({name:req.body.targ},(err,images)=>{
+            console.log(images);
             res.send(images);
         });
     } catch(err){
