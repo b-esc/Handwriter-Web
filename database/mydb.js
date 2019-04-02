@@ -76,10 +76,9 @@ router.post("/targResults", (req,res)=>{
     types of files (ideally all 3, thinned, og, and thinnedOG)
     Unless files are standardized / fixed.
      */
-    sizeOf('/ThinImages/'+req.body.targ+'_thinned')
     try{
         dbutils.Image.find({name:req.body.targ},(err,images)=>{
-            console.log(images);
+            if(err) throw (err);
             res.send(images);
         });
     } catch(err){
@@ -142,21 +141,35 @@ router.post("/fileUpload", (req, res) => {
                     throw(err);
                 }
                 console.log("yoooo files length **^SLAT:" + files.length);
-                var toSave = new dbutils.Image({
-                    name: filename,
-                    letterCount: files.length,
-                    date: Date(Date.now),
-                    data: JSON.parse(data)
-                });
-                toSave.save(function (err) {
+                numLetters = files.length;
+
+                sizeOf(__dirname + "/../uploads/ThinImages/" + filename + "_thinned.png", (err, dim) =>{
                     if(err){
-                        console.log("error in database");
-                        throw(err);
+                        console.log("error in sizeOf!!");
+                        console.log(err);
+                        throw err;
                     }
-                    else {
-                        console.log("saved to database");
-                    }
+                    var toSave = new dbutils.Image({
+                        name: filename,
+                        letterCount: files.length,
+                        date: Date(Date.now),
+                        data: JSON.parse(data),
+                        width: dim.width,
+                        height: dim.height,
+                    });
+
+                    toSave.save(function (err) {
+                        if(err){
+                            console.log("error in saving to database");
+                            throw(err);
+                        }
+                        else {
+                            console.log("saved to database");
+                        }
+                    });
                 });
+
+
             });
 
 

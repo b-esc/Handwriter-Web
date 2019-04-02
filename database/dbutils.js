@@ -16,7 +16,9 @@ var imageSchema = new mongoose.Schema({
     name: String,
     letterCount: Number,
     date: String,
-    data: []
+    data: [],
+    width: Number,
+    height: Number,
 });
 
 const Image = mongoose.model("Image", imageSchema);
