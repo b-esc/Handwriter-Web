@@ -99,6 +99,7 @@
     "http-signature": "^1.2.0",
     "iconv-lite": "^0.4.24",
     "ieee754": "^1.1.12",
+    "image-aspect-ratio": "^1.0.0",
     "inflight": "^1.0.6",
     "inherits": "^2.0.3",
     "ip-regex": "^4.0.0",

@@ -7,6 +7,7 @@ var path = require("path");
 const request = require("request");
 var app = require("../app");
 var sizeOf = require('image-size');
+var imageAspectRatio = require('image-aspect-ratio');
 //var mongoose = require("mongoose");
 //mongoose.connect(url);
 // var multer = require("multer");
@@ -149,6 +150,10 @@ router.post("/fileUpload", (req, res) => {
                         console.log(err);
                         throw err;
                     }
+                    /*
+                    BAD: ASSUMES USERS HAVE FHD DISPLAY.
+                    RECALCULATE PROBABLY
+                     */
                     var toSave = new dbutils.Image({
                         name: filename,
                         letterCount: files.length,
