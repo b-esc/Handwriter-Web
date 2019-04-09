@@ -31,7 +31,7 @@ function featuresToTable(features){
         html += `<tr id=${targId}>`;
         //html += `<tr onclick='function(){showLetter(${targIndex})}'>`;
         for(var prop in features[i]){
-            if(features[i][prop].length > 15) features[i][prop] = "...";
+            //if(features[i][prop].length > 15) features[i][prop] = "...";
             html += "<td>" + features[i][prop] + "</td>";
         }
         html += "</tr>"

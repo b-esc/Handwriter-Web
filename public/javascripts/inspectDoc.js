@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var globaldraw;
     //this is a massive hack lol
     //two test
     /*
@@ -135,10 +136,14 @@ $(document).ready(function () {
     function initDrawClient(letterData,height,width,heightOffset,widthOffset){
         console.log(height + " " + width + " " + heightOffset + " " + widthOffset);
         var draw = buildDrawingInstance(letterData,`/ThinImages/${filename}_thinned.png`,'inspectTarg', width,height,widthOffset,heightOffset);
-
-        drawCircle(draw,5,5,2);
-        drawCircle(draw,770,556,2);
-        drawCentroid(draw,[3,4,5,6],4);
+      globaldraw = draw;
+        //drawCircle(draw,5,5,2);
+        //drawCircle(draw,770,556,2);
+        //drawLetterCentroids(draw,[2,3,4],4);
+        //drawLetterPaths(draw,[2,3],4);
+      //
+      //hmm this is pretty much the centroid rn
+        //drawLetterCirclePath(draw,[2,3],2);
         draw.update();
     }
 
@@ -148,6 +153,11 @@ $(document).ready(function () {
         console.log(ogId);
     });
 
+  $('#mark-centroids-button').click(()=>{
+    var inputs = $('#mark-centroids-input').val().split(",");
+    drawLetterCirclePath(globaldraw,inputs,8);
+    globaldraw.update();
+  }) 
 
 
 });

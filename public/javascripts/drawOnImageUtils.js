@@ -43,10 +43,34 @@ function drawCircle(two, x, y, rad){
     circle.fill = '#FF8000';
 }
 
-function drawCentroid(two, num, rad){
+function drawLetterCentroids(two, num, rad){
     for(var i = 0; i < num.length; i++){
         var curLetter = gLetterData[num[i]];
         drawCircle(two,curLetter.centroid_x*widthMod,curLetter.centroid_y*heightMod,rad);
+    }
+}
+
+function drawLetterPaths(two,num,rad){
+    console.log("about to call two makepath");
+    for(var i = 0; i < num.length; i++){
+        console.log("about to call two makepath");
+        var curLetter = gLetterData[num[i]];
+        var path = [];
+        for(var j = 0; i < curLetter.pathX.length; j++){
+            path.push(curLetter.pathX[j]);
+            path.push(curLetter.pathY[j]);
+        }
+        console.log("about to call two makepath");
+        two.makePath(1,1,2,2,3,3,true);
+    }
+}
+
+function drawLetterCirclePath(two,num,rad){
+    for(var i = 0; i < num.length; i++){
+        var curLetter = gLetterData[num[i]];
+        for(var j = 0; j < curLetter.pathX.length; j++){
+            drawCircle(two,curLetter.centroid_x*widthMod,curLetter.centroid_y*heightMod,rad);
+        }
     }
 }
 // function alignMod(data){

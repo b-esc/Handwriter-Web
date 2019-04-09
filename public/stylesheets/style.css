@@ -85,7 +85,7 @@ a {
     position: absolute;
     top: 50%;
     right: 50%;
-    transform: translate(50%,15%);
+    transform: translate(50%,35%);
     /*max-width: 90%;*/
     padding: 2em 3em;
     background: #ffffff;
@@ -99,6 +99,19 @@ a {
     top: 30%;
     right: 50%;
     transform: translate(50%,10%);
+    /*max-width: 90%;*/
+    padding: 2em 3em;
+    background: #cccccc;
+    text-shadow: 0px 0px 2px #131415;
+    font-family: 'Open Sans', sans-serif;
+    border-style:outset;
+}
+
+#draw-control-container{
+    position: absolute;
+    top: 30%;
+    right: 50%;
+    transform: translate(50%,30%);
     /*max-width: 90%;*/
     padding: 2em 3em;
     background: #cccccc;
