@@ -155,9 +155,15 @@ $(document).ready(function () {
 
   $('#mark-centroids-button').click(()=>{
     var inputs = $('#mark-centroids-input').val().split(",");
-    drawLetterCirclePath(globaldraw,inputs,8);
+    drawLetterCentroids(globaldraw,inputs,8);
     globaldraw.update();
-  }) 
+  }); 
 
+  $('#mark-lettercodes-button').click(()=>{
+    var inputs = $('#mark-centroids-input').val().split(",");
+    var lcNum = letterCodesToNumbers(inputs);
+    drawLetterCentroids(globaldraw,...lcNum,8);
+    globaldraw.update();
+  });
 
 });

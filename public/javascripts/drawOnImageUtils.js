@@ -21,9 +21,16 @@ returns: two instance used for drawing..
 var widthMod = 1;
 var heightMod = 1;
 var gLetterData;
+var letterCodeNums = {};
 
 function buildDrawingInstance(letterData, backgroundImgPath,targetId, w, h, wo, ho){
     gLetterData = letterData;
+    for(var i = 0; i < letterData.length; i++){
+      if(letterCodeNums[letterData[i].letterCode] == null){
+        letterCodeNums[letterData[i].letterCode] = [];
+      } 
+        letterCodeNums[letterData[i].letterCode].push(i);
+    }
     widthMod = wo;
     heightMod = ho;
     var targetEle = document.getElementById(targetId);
@@ -35,6 +42,7 @@ function buildDrawingInstance(letterData, backgroundImgPath,targetId, w, h, wo, 
     document.querySelector("svg").innerHTML += bg;
     console.log(gLetterData);
     two.update();
+    console.log(letterCodeNums);
     return two;
 }
 
@@ -46,6 +54,7 @@ function drawCircle(two, x, y, rad){
 function drawLetterCentroids(two, num, rad){
     for(var i = 0; i < num.length; i++){
         var curLetter = gLetterData[num[i]];
+        console.log(curLetter);
         drawCircle(two,curLetter.centroid_x*widthMod,curLetter.centroid_y*heightMod,rad);
     }
 }
@@ -72,6 +81,14 @@ function drawLetterCirclePath(two,num,rad){
             drawCircle(two,curLetter.centroid_x*widthMod,curLetter.centroid_y*heightMod,rad);
         }
     }
+}
+function letterCodesToNumbers(letterCodeArr){
+  res = [];
+  for(var i = 0; i < letterCodeArr.length; i++){
+    res.push(letterCodeNums[letterCodeArr])
+  }
+  console.log(res);
+  return res;
 }
 // function alignMod(data){
 //     if(data[height] > 800 && data[width] > 1100){
