@@ -79,7 +79,11 @@ $(document).ready(function () {
         Swal.fire({
             title: `${letterid} in ${filename}`,
             imageUrl: `/LetterPlots/${filename}/${letterid}.png`,
-            type: "info",
+            type: "question",
+            confirmButtonText:'Compare Features',
+            inputValidator: () =>{
+                alert('what');
+            }
         });
     }
 
@@ -167,3 +171,5 @@ $(document).ready(function () {
   });
 
 });
+
+

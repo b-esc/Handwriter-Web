@@ -138,8 +138,6 @@ $( document ).ready(function() {
 
     $('#upload').on('change', function () { readFile(this); });
     $('.upload-result').on('click', function (ev) {
-        
-                        
             filename = $('#upload').val().replace(/C:\\fakepath\\/i, '');
             base64Upload(toUpload,filename);
             //$('#fileupload').submit();
