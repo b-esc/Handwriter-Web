@@ -103,31 +103,64 @@ function letterCodesToNumbers(letterCodeArr){
 
 /*
  * Called from showletter's inputValidator
- * TODO: performance improvements via mutation
- * Recreating swals everytime for now to expidite development
+ *  TODO:
+ *      Mutation instead of constant swal recreation
+ *      Double sliders
+ *
  */
 function compareLetter(letterid){
-    /*LOL R to regular programming languages
-    R is one indexed, so we take the end of the letterid
-    and decrement it by one*/
     var targLetter = letterid.substr(-1);
-    targLetter--; //this is now a # that indexes our gLetterData
-    //LetterCodes, characters already initialized
-
+    targLetter--;
+    //this is now a # that indexes our gLetterData
+    //SWCP is a global regex identifier meaning SWAL COMPARE
+    var curData = gLetterData[targLetter];
     // Create Letter Code Comparison Swal
-    var letterCodeSwal = {
+    var compareLC_SWCP = {
         title: 'Letter Code Comparison',
         input: 'select',
         inputOptions:{},
-        inputPlaceholder: 'Choose a Letter Code'
+        inputPlaceholder: 'Choose a Letter Code',
         inputValidator: (value) =>{
             console.log(value);
         }
     }
-    var availableLetterCodes = letterCodeNums.keys();
+    var availableLetterCodes = Object.keys(letterCodeNums);
     for(var i = 0; i < availableLetterCodes.length; i++){
         var cur = availableLetterCodes[i];
-        letterCodeSwal.inputOptions.cur = cur;
+        compareLC_SWCP.inputOptions.cur = cur;
     }
-    swals.letterCodeSwal = letterCodeSwal;
+    swals.compareLC_SWCP = compareLC_SWCP;
+
+    //Create Centroid Horiz Location swals
+    var compareHCL_SWCP = {
+        title: 'Centroid Horizontal Location',
+        input: 'range',
+        inputAttributes:{
+            min: 0,
+            max: 1,
+            step:.001,
+        },
+        inputValue: curData.centroid_horiz_location,
+        inputValidator: (value) =>{
+            console.log(value);
+        }
+    }
+    swals.compareHCL_SWCP = compareHCL_SWCP;
+
+    //Create Centroid Vert Location swals
+    var compareVCL_SWCP = {
+        title: 'Centroid Vertical Location',
+        input: 'range',
+        inputAttributes:{
+            min: 0,
+            max: 1,
+            step:.001,
+        },
+        inputValue: curData.centroid_vert_location,
+        inputValidator: (value) =>{
+            console.log(value);
+        }
+    }
+    swals.compareVCL_SWCP = compareVCL_SWCP;
+
 }

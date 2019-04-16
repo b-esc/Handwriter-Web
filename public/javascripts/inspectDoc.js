@@ -86,6 +86,7 @@ $(document).ready(function () {
             confirmButtonText:'Compare Features',
             inputValidator: (result) =>{
                 console.log("this was confirmed" + letterid);
+                compareLetter(letterid);
             }
         });
     }
@@ -158,6 +159,14 @@ $(document).ready(function () {
         ogId = e.currentTarget.id;
         showLetter(ogId);
         console.log(ogId);
+    });
+
+    $(document).on('click','[id$=SWCP]',function(e){
+        ogId = e.currentTarget.id;
+        console.log(ogId);
+        console.log(swals);
+        console.log(swals.ogId);
+        Swal.fire(swals[ogId]);
     });
 
   $('#mark-centroids-button').click(()=>{
