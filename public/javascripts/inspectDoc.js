@@ -80,9 +80,12 @@ $(document).ready(function () {
             title: `${letterid} in ${filename}`,
             imageUrl: `/LetterPlots/${filename}/${letterid}.png`,
             type: "question",
+            input: 'checkbox',
+            inputValue: 1,
+            inputPlaceholder: 'Override Comparison Settings with Letter',
             confirmButtonText:'Compare Features',
-            inputValidator: () =>{
-                alert('what');
+            inputValidator: (result) =>{
+                console.log("this was confirmed" + letterid);
             }
         });
     }

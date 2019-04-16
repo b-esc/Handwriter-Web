@@ -22,6 +22,16 @@ var widthMod = 1;
 var heightMod = 1;
 var gLetterData;
 var letterCodeNums = {};
+/* swals (sweetalerts) are popup boxes
+ * they can be modified once a letter has been selected from "View Data"
+ * current swals:
+ * LetterCodes (selector, should appear by default)
+ * LoopCount, Line Number, Centroid H/V Location (sliders)
+ * Double value sliders would be cool
+ *
+ * see sweetalert2 documentation
+ */
+var swals = {}
 
 function buildDrawingInstance(letterData, backgroundImgPath,targetId, w, h, wo, ho){
     gLetterData = letterData;
@@ -90,14 +100,34 @@ function letterCodesToNumbers(letterCodeArr){
   console.log(res);
   return res;
 }
-// function alignMod(data){
-//     if(data[height] > 800 && data[width] > 1100){
-//
-//     }
-//     else if(data[height] > 800){
-//
-//     }
-//     else if(data[width] > 1100){
-//
-//     }
-// }
+
+/*
+ * Called from showletter's inputValidator
+ * TODO: performance improvements via mutation
+ * Recreating swals everytime for now to expidite development
+ */
+function compareLetter(letterid){
+    /*LOL R to regular programming languages
+    R is one indexed, so we take the end of the letterid
+    and decrement it by one*/
+    var targLetter = letterid.substr(-1);
+    targLetter--; //this is now a # that indexes our gLetterData
+    //LetterCodes, characters already initialized
+
+    // Create Letter Code Comparison Swal
+    var letterCodeSwal = {
+        title: 'Letter Code Comparison',
+        input: 'select',
+        inputOptions:{},
+        inputPlaceholder: 'Choose a Letter Code'
+        inputValidator: (value) =>{
+            console.log(value);
+        }
+    }
+    var availableLetterCodes = letterCodeNums.keys();
+    for(var i = 0; i < availableLetterCodes.length; i++){
+        var cur = availableLetterCodes[i];
+        letterCodeSwal.inputOptions.cur = cur;
+    }
+    swals.letterCodeSwal = letterCodeSwal;
+}
