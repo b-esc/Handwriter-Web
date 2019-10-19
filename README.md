@@ -7,8 +7,6 @@ usage:
 
 clone & install https://github.com/CSAFE-ISU/handwriter via r-studio
 
-(i'll write a docker or sh file next semester to do this)
-
   - checkout dev_master for access to plumber.R (master is cran compliant) 
   - cd into handwriter
   - pr <- plumber::plumb("./plumber.R") 
