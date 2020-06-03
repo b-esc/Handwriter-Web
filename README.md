@@ -1,7 +1,11 @@
-# handwriter_webapp
-web application for QDA document analysis
+# handwriter-web
+web application for QDA document analysis, allows uploads & minor image edits, displaying results from Nick Berry's handwriter R package
+
+R + Javascript
 
 dependencies: handwriter, rstudio, mongodb, nodejs/expressjs (npm install in this repo)
+
+handwriter: https://github.com/CSAFE-ISU/handwriter
 
 usage:
 
@@ -16,5 +20,4 @@ clone & install https://github.com/CSAFE-ISU/handwriter via r-studio
   - nodemon / start the server
   - visit localhost:8000
   
-  
-if you have any issues let me know
+contact if questions
