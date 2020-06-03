@@ -1,4 +1,6 @@
 # handwriter-web
+extension for handwriter @CSAFE-ISU
+
 web application for QDA document analysis, allows uploads & minor image edits, displaying results from Nick Berry's handwriter R package
 
 R + Javascript
