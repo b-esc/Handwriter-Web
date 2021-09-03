@@ -142,7 +142,7 @@
     "mongoose": "^5.4.6",
     "mongoose-legacy-pluralize": "^1.0.2",
     "morgan": "^1.9.1",
-    "mpath": "^0.5.1",
+    "mpath": "^0.8.4",
     "mquery": "^3.2.0",
     "ms": "^2.1.1",
     "multer": "^1.4.1",
