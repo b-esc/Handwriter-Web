@@ -71,7 +71,7 @@
     "events": "^3.0.0",
     "exif-parser": "^0.1.12",
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.3.1",
     "extend": "^3.0.2",
     "extsprintf": "^1.4.0",
     "fast-deep-equal": "^2.0.1",
