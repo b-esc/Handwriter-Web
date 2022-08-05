@@ -139,7 +139,7 @@
     "mkdirp": "^0.5.1",
     "mongodb": "^3.1.13",
     "mongodb-core": "^3.1.11",
-    "mongoose": "^5.4.6",
+    "mongoose": "^5.7.5",
     "mongoose-legacy-pluralize": "^1.0.2",
     "morgan": "^1.9.1",
     "mpath": "^0.5.1",
